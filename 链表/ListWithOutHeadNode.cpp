@@ -148,11 +148,13 @@ LinkNode* OutPut(LinkNode *head)
 int main()
 {
     LinkNode* p = create();
+    /*
     removeNode(p, 1);
     OutPut(p);
     removeNode(p, 5);
     OutPut(p);
     insertNode(p, 3, 10);
+    */
     OutPut(p);
     return 0;
 }
