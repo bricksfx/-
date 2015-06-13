@@ -32,6 +32,47 @@ LinkNode* create()
     return head;
 }
 
+void reverseList(LinkNode* &head)
+{
+    LinkNode *n1, *n2, *n3;
+    if(head != NULL && head->next != NULL)
+    {
+        n1 = head;
+        n2 = n1->next;
+        cout<<"reverse list begin"<<endl;
+        while(n2)
+        {
+            n3 = n2->next;
+            n2->next = n1;
+            n1 = n2;
+            n2 = n3;
+        }
+        head->next = NULL;
+        head = n1;
+        cout<<"reverse list over"<<endl;
+    }
+}
+
+void *reverse(LinkNode* head, LinkNode *& head_static)
+{
+    if(head)
+    {
+        LinkNode* cur = head;
+        LinkNode* next = head->next;
+        if(next)
+        {
+            reverse(next, head_static);
+            next->next = cur;
+        }
+        else
+        {
+           cout<<cur->data<<' '<<endl;
+           head_static->next = NULL;
+           head_static = cur; 
+        }
+    }
+}
+
 bool insertNode(LinkNode* &head, int num, DataType x)
 {
     LinkNode* q = new LinkNode;
@@ -130,10 +171,6 @@ bool remove(LinkNode*& head, int num)
 }
 */
 
-
-
-
-
 LinkNode* OutPut(LinkNode *head)
 {
     LinkNode*p = head;
@@ -155,6 +192,8 @@ int main()
     OutPut(p);
     insertNode(p, 3, 10);
     */
+    OutPut(p);
+    reverse(p, p);
     OutPut(p);
     return 0;
 }
